@@ -27,26 +27,26 @@ class Image {
 	private $mime;
 
 	/**
- 	 * Constructor
- 	 *
+	 * Constructor
+	 *
 	 * @param string $file
 	 *
 	 * @return void
 	 */
- 	public function __construct($file) {
- 		if (file_exists($file)) {
- 			$this->file = $file;
- 			$this->image = new Imagick();
- 			$this->image->readImage($file);
+	public function __construct($file) {
+		if (file_exists($file)) {
+			$this->file = $file;
+			$this->image = new Imagick();
+			$this->image->readImage($file);
 
- 			$this->width = $this->image->getImageWidth();
- 			$this->height = $this->image->getImageHeight();
- 			$this->bits = $this->image->getImageLength();
+			$this->width = $this->image->getImageWidth();
+			$this->height = $this->image->getImageHeight();
+			$this->bits = $this->image->getImageLength();
 			$this->mime = $this->image->getFormat();
- 		} else {
- 			exit('Error: Could not load image ' . $file . '!');
- 		}
- 	}
+		} else {
+			exit('Error: Could not load image ' . $file . '!');
+		}
+	}
 
 	/**
 	 * @return string
@@ -99,7 +99,7 @@ class Image {
 	public function save($file, $quality = 100) {
 		$this->image->setCompressionQuality($quality);
 
-  		$this->image->setImageFormat($this->mime);
+		$this->image->setImageFormat($this->mime);
 
 		$this->image->writeImage($file);
 	}
@@ -111,10 +111,10 @@ class Image {
 	 *
 	 * @return void
 	 */
-  	public function resize($width = 0, $height = 0, $default = '') {
-    	if (!$this->width || !$this->height) {
+	public function resize($width = 0, $height = 0, $default = '') {
+		if (!$this->width || !$this->height) {
 			return;
-    	}
+		}
 
 		switch ($default) {
 			case 'w':
@@ -125,33 +125,33 @@ class Image {
 				break;
 		}
 
-    	$this->image->resizeImage($width, $height, Imagick::FILTER_CATROM, 1, true);
+		$this->image->resizeImage($width, $height, Imagick::FILTER_CATROM, 1, true);
 
-   		$this->width = $this->image->getImageWidth();
+		$this->width = $this->image->getImageWidth();
 		$this->height = $this->image->getImageHeight();
 
-    	if ($width == $height && $this->width != $this->height) {
-	    	$image = new Imagick();
+		if ($width == $height && $this->width != $this->height) {
+			$image = new Imagick();
 
-		    if ($this->mime == 'image/png') {
-		    	$background_color = 'transparent';
-		    } else {
-		    	$background_color = 'white';
-		    }
+			if ($this->mime == 'image/png') {
+				$background_color = 'transparent';
+			} else {
+				$background_color = 'white';
+			}
 
 			$image->newImage($width, $height, new ImagickPixel($background_color));
-	    
-		    $x = (int)(($width - $this->width) / 2);
-		    $y = (int)(($height - $this->height) / 2);
+			
+			$x = (int)(($width - $this->width) / 2);
+			$y = (int)(($height - $this->height) / 2);
 
-		    $image->compositeImage($this->image, Imagick::COMPOSITE_OVER, $x, $y);
+			$image->compositeImage($this->image, Imagick::COMPOSITE_OVER, $x, $y);
 
-		    $this->image = $image;
+			$this->image = $image;
 
-		    $this->width = $this->image->getImageWidth();
-		    $this->height = $this->image->getImageHeight();
-	  	}
-  	}
+			$this->width = $this->image->getImageWidth();
+			$this->height = $this->image->getImageHeight();
+		}
+	}
 
 	/**
 	 * @param string $watermark
@@ -165,37 +165,37 @@ class Image {
 		switch ($position) {
 			case 'overlay':
 				for ($width = 0; $width < $this->width; $width += $watermark->getImageWidth()) {
-		          for ($height = 0; $height < $this->height; $height += $watermark->getImageHeight()) {
-		            $this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, $width, $height);
-		          }
-		        }
+					for ($height = 0; $height < $this->height; $height += $watermark->getImageHeight()) {
+						$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, $width, $height);
+					}
+				}
 				break;
-      		case 'topleft':
-      			$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, 0, 0);
+			case 'topleft':
+				$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, 0, 0);
 				break;
 			case 'topcenter':
 				$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, intval(($this->width - $watermark->getImageWidth()) / 2), 0);
 				break;
 			case 'topright':
-		      	$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, $this->width - $watermark->getImageWidth(), 0);
+				$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, $this->width - $watermark->getImageWidth(), 0);
 				break;
 			case 'middleleft':
 				$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, 0, intval(($this->height - $watermark->getImageHeight()) / 2));
 				break;
 			case 'middlecenter':
-      			$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, intval(($this->width - $watermark->getImageWidth()) / 2), intval(($this->height - $watermark->getImageHeight()) / 2));
+				$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, intval(($this->width - $watermark->getImageWidth()) / 2), intval(($this->height - $watermark->getImageHeight()) / 2));
 				break;
 			case 'middleright':
-      			$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, $this->width - $watermark->getImageWidth(), intval(($this->height - $watermark->getImageHeight()) / 2));
+				$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, $this->width - $watermark->getImageWidth(), intval(($this->height - $watermark->getImageHeight()) / 2));
 				break;
-      		case 'bottomleft':
-      			$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, 0, $this->height - $watermark->getImageHeight());
+			case 'bottomleft':
+				$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, 0, $this->height - $watermark->getImageHeight());
 				break;
 			case 'bottomcenter':
 				$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, intval(($this->width - $watermark->getImageWidth()) / 2), $this->height - $watermark->getImageHeight());
 				break;
-      		case 'bottomright':
-      			$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, $this->width - $watermark->getImageWidth(), $this->height - $watermark->getImageHeight());
+			case 'bottomright':
+				$this->image->compositeImage($watermark, Imagick::COMPOSITE_OVER, $this->width - $watermark->getImageWidth(), $this->height - $watermark->getImageHeight());
 				break;
 		}
 	}
@@ -222,9 +222,9 @@ class Image {
 	 * @return void
 	 */
 	public function rotate($degree, $color = 'FFFFFF') {
-  		$this->image->rotateImage($color, $degree);
+		$this->image->rotateImage($color, $degree);
 
 		$this->width = $this->image->getImageWidth();
 		$this->height = $this->image->getImageHeight();
-  	}
+	}
 }
