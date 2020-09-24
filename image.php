@@ -1,4 +1,23 @@
 <?php
+/**
+ * Image editor with usage of Imagick library in CMS OpenCart for OpenCart community
+ *
+ * Copyright (C) 2020  Dmitriy Sokolenko
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/**
+ * Image class
+ */
 class Image {
 	private $file;
 	private $image;
@@ -7,6 +26,13 @@ class Image {
 	private $bits;
 	private $mime;
 
+	/**
+ 	 * Constructor
+ 	 *
+	 * @param string $file
+	 *
+	 * @return void
+	 */
  	public function __construct($file) {
  		if (file_exists($file)) {
  			$this->file = $file;
@@ -22,30 +48,54 @@ class Image {
  		}
  	}
 
+	/**
+	 * @return string
+	 */
 	public function getFile() {
 		return $this->file;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getImage() {
 		return $this->image;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getWidth() {
 		return $this->width;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getHeight() {
 		return $this->height;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getBits() {
 		return $this->bits;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getMime() {
 		return $this->mime;
 	}
 
+	/**
+	 * @param string $file
+	 * @param int $quality
+	 *
+	 * @return void
+	 */
 	public function save($file, $quality = 100) {
     $this->image->setCompressionQuality($quality);
 
@@ -54,6 +104,13 @@ class Image {
     $this->image->writeImage($file);
   }
 
+	/**
+	 * @param int $width
+	 * @param int $height
+	 * @param string $default
+	 *
+	 * @return void
+	 */
   public function resize($width = 0, $height = 0, $default = '') {
     if (!$this->width || !$this->height) {
 			return;
@@ -96,6 +153,12 @@ class Image {
 	  }
   }
 
+	/**
+	 * @param string $watermark
+	 * @param string $position
+	 *
+	 * @return void
+	 */
 	public function watermark($watermark, $position = 'bottomright') {
 		$watermark = new Imagick($watermark);
 
@@ -137,6 +200,14 @@ class Image {
 		}
 	}
 
+	/**
+	 * @param int $top_x
+	 * @param int $top_y
+	 * @param int $bottom_x
+	 * @param int $bottom_y
+	 *
+	 * @return void
+	 */
 	public function crop($top_x, $top_y, $bottom_x, $bottom_y) {
 		$this->image->cropImage($bottom_x - $top_x, $bottom_y - $top_y, $top_x, $top_y);
 
@@ -144,6 +215,12 @@ class Image {
 		$this->height = $this->image->getImageHeight();
 	}
 
+	/**
+	 * @param int $degree
+	 * @param string $color
+	 *
+	 * @return void
+	 */
   public function rotate($degree, $color = 'FFFFFF') {
   	$this->image->rotateImage($color, $degree);
 
