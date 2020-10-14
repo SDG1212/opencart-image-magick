@@ -1,5 +1,5 @@
 <h2>Overview</h2>
-<p>Opencart Imagick is a program code which allows you to use Image Magick library in CMS Opencart.</p>
+<p>Opencart Imagick is a program code which allows you to use Image Magick library in CMS Opencart (3.X version).</p>
 <h2>Comparison between Image Magick and GD</h2>
 <p>Stackoverflow forum:</p>
 <ul>
