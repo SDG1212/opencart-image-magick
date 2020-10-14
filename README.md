@@ -1,10 +1,24 @@
 <h2>Overview</h2>
-<p>Opencart Imagick is a program code which allows you to use Imagick library in CMS Opencart.</p>
-<h2>Why do I need to use it?</h2>
-<p>Imagick library has more opportunities to edit images than GD library. The most important function in CMS Opencart is resizing with different filters. By using Imagick library you can change filter to whatever you want from 15 types. You can read more details about filters by this <a href="http://www.imagemagick.org/Usage/filter/#summery">link</a></p>
-<h2>How to install</h2>
+<p>Opencart Imagick is a program code which allows you to use Image Magick library in CMS Opencart.</p>
+<h2>Comparison between Image Magick and GD</h2>
+<p>Stackoverflow forum:</p>
 <ul>
-  <li>1. Make sure that your server supports Imagick library;</li>
-  <li>2. Make backup of file <code>image.php</code> in the folder <code>system/library</code>;</li>
-  <li>3. Replace file <code>image.php</code> in the folder <code>system/library</code>.</li>
+  <li><a href="https://stackoverflow.com/questions/8319203/imagemagick-vs-gd-which-is-faster-less-resource-intensive-and-produces-better">ImageMagick vs GD - which is faster, less resource intensive and produces better images?</a></li>
+  <li><a href="https://stackoverflow.com/questions/5282072/gd-vs-imagemagick-vs-gmagick-for-jpg">GD vs ImageMagick vs Gmagick for jpg?</a></li>  
+</ul>
+<p>Other sources:</p>
+<ul>
+  <li><a href="https://habr.com/ru/post/188666/">GD vs Image Magick vs Gmagick Benchmark (article in russian language)</a></li>
+</ul>
+<h2>How to install</h2>
+<ol>
+  <li>Make sure that your server supports Imagick library;</li>
+  <li>Make backup of file <code>image.php</code> in the folder <code>system/library</code>;</li>
+  <li>Replace file <code>image.php</code> in the folder <code>system/library</code>.</li>
+</ol>
+<h2>Documentation</h2>
+<ul>
+  <li><a href="https://imagemagick.org/">Image Magick website</a></li>
+  <li><a href="https://legacy.imagemagick.org/Usage/">Image Magick usage</a></li>
+  <li><a href="https://www.php.net/manual/en/book.imagick.php">PHP Image Magick docs</a></li>
 </ul>
