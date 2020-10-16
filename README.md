@@ -1,5 +1,5 @@
 <h2>Overview</h2>
-<p>Opencart Imagick is a program code which allows you to use Image Magick library in CMS Opencart (3.X version).</p>
+<p>Opencart Image Magick is a program code which allows you to use Image Magick library in CMS Opencart (3.X version).</p>
 <h2>Comparison between Image Magick and GD</h2>
 <p>Stackoverflow forum:</p>
 <ul>
@@ -18,7 +18,6 @@
 </ol>
 <h2>Documentation</h2>
 <ul>
-  <li><a href="https://imagemagick.org/">Image Magick website</a></li>
-  <li><a href="https://legacy.imagemagick.org/Usage/">Image Magick usage</a></li>
   <li><a href="https://www.php.net/manual/en/book.imagick.php">PHP Image Magick docs</a></li>
+  <li><a href="https://legacy.imagemagick.org/Usage/">Image Magick usage</a></li>
 </ul>
