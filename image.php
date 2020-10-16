@@ -1,6 +1,6 @@
 <?php
 /**
- * Image editor with usage of Imagick library in CMS OpenCart for OpenCart community
+ * Opencart Image Magick is a program code which allows you to use Image Magick library in CMS Opencart (3.X version).
  *
  * Copyright (C) 2020  Dmitriy Sokolenko
  * 
