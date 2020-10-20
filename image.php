@@ -125,6 +125,9 @@ class Image {
 				break;
 		}
 
+		// Image Magick Filter Comparison
+		// https://legacy.imagemagick.org/Usage/filter
+		// https://urmaul.com/blog/imagick-filters-comparison
 		$this->image->resizeImage($width, $height, Imagick::FILTER_CATROM, 1, true);
 
 		$this->width = $this->image->getImageWidth();
