@@ -34,6 +34,10 @@ class Image {
 	 * @return void
 	 */
 	public function __construct($file) {
+		if (!extension_loaded('imagick')) {
+			exit('Error: PHP Imagick is not installed!');
+		}
+
 		if (file_exists($file)) {
 			$this->file = $file;
 			$this->image = new Imagick();
