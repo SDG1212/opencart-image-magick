@@ -1,5 +1,9 @@
 <h2>Overview</h2>
 <p>Opencart Image Magick is a program code which allows you to use Image Magick library in CMS Opencart (3.X version).</p>
+<h2>Donate</h2>
+<p><b>BTC (Bitcoin)</b><br>1KFQbt5LrTfRH1FaHEzQGcSsmTYPDjf7xo</p>
+<p><b>USDT (TRC-20)</b><br>TMEwEdx9fB9SRjT7kZbLt1PQAvd2PozGLv</p>
+<p><b>Goal</b><br>100$ to buy hosting and domain name for the website where I want to sell IT products.</p>
 <h2>Comparison between Image Magick and GD</h2>
 <p>Stackoverflow forum:</p>
 <ul>
