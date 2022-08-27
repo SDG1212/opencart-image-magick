@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Image Magick</name>
+    <code>opencart-image-magick</code>
+    <version>1.0</version>
+    <author>Dmytro Sokolenko</author>
+    <link>https://github.com/SDG1212</link> 
+</modification>
